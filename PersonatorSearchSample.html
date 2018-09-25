@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Personator Search Demo</title>	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+    <style>
+        .header img {
+            float: right;
+            width: 188px;
+            height: 80px;
+            background: #555;
+        }
+
+        .header h2 {
+            position: relative;
+            top: 18px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body class="ui container">
+    <p>	
+    <div class="header">
+        <img src="melissa-global-intelligence.jpg" width="188" height="80" alt="logo" />
+        <h2 class="ui header">Personator Search Demo</h2>		
+		<br>
+    </div>	
+	<br>
+	<div class="wiki">
+		
+	</div>
+    <div class="main ui container">	
+        <div class="ui top attached tabular menu">
+            <a class="item active" data-tab="tab-name">Input</a>
+			<a class="item" data-tab="tab-name3">Request</a>
+            <a class="item" data-tab="tab-name2">Output</a>
+        </div>
+        <!-- Input tab -->
+        <div class="ui bottom attached tab segment active" data-tab="tab-name">
+            <div class="ui two column stackable grid container">
+                <div class="column">
+				<a href="http://wiki.melissadata.com/index.php?title=Personator_Search">Personator Search Wiki</a>
+                    <!-- License Key -->
+                    <div class="ui info message">					
+                        <div class="header">
+                            License Key
+                        </div>
+                        Enter here your encrypted and unique license key from Melissa Data. This is necessary for including with each request to the web service. If you do not have a license key, please contact your Melissa Data sales representative at 1-800-MELISSA (1-800-635-4772)
+                    </div>
+                    <div class="ui input right fluid field">
+                        <input type="text" placeholder="License Key..." name="id">
+                    </div>
+                    <p>
+                    <!-- Column Responses -->
+                    <div class="ui info message">
+                        <div class="header">
+                            Column Responses
+                        </div>
+                        <ul class="list">
+                            <li>Move Date - Returns the most recent move date</li>
+                            <li>Phone - Returns the phone number</li>
+                            <li>Email - Returns the email</li>
+                            <li>Date of Death - Returns the date of death</li>
+                            <li>Date of Birth - Returns the date of birth</li> 
+                        </ul>
+                    </div>
+					<div class="ui two column stackable grid container">
+						<div class="column">
+                            <div class="ui checkbox">
+                                <input id='selectAll' type="checkbox"> 
+                                <label>Select All</label>
+                            </div>
+                            <br>
+						   <div class="ui checkbox">
+								<input type="checkbox" name="col_moveDate"> 
+								<label>Move Date</label>
+							</div>
+							<br>
+							<div class="ui checkbox">
+								<input type="checkbox" name="col_phone">   
+								<label>Phone</label>
+							</div>
+							<br>											
+						</div>
+						<div class="column">
+							<div class="ui checkbox">
+								<input type="checkbox" name="col_email"> 
+								<label>Email</label>
+							</div>
+							<br>
+							<div class="ui checkbox">
+								<input type="checkbox" name="col_dateOfDeath"> 
+								<label>Date of Death</label>
+							</div>
+							<br>	
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="col_dateOfBirth"> 
+                                <label>Date of Birth</label>
+                            </div>
+                            <br>
+						</div>
+					</div>
+                    <p>
+                    <!-- Options -->
+                    <div class="ui info message">
+                        <div class="header">
+                            Options
+                        </div>
+						<ul class="list">
+                            <li>Search Conditions - Specifies the type of search conditions to use when returning records. Only the populated input fields will be compared. A strict search condition is used by default</li>
+                            <li>Max Email - Sets the maximum number of emails that can be returned. Default maximum is "3" if this option is not set</li>
+                            <li>Search Type - Allows you to specify the type of search to perform</li>                           
+                            <li>Max Phone - Sets the maximum number of phone numbers that can be returned. Default maximum is "3" if this option is not set</li>                            
+                            <li>Sort By - Allows sorting records in a particular order</li>
+                            <li>Return All Pages - If enabled, will return all records up to a limit of 500</li>
+                            <li>Page - Specifies which "page" to return for a given request. Your "page" length is set by the Records Per Page option</li>
+                            <li>Records Per Page - Specifies how many records are in a "page". The default value is 5</li>
+                            <li>Age Range - Sets the range of ages returned. Default will return all ages</li>
+                        </ul>
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_sortBy">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Sort By</div>
+                        <div class="menu">
+                            <div class="item" data-value="PostalCode">Postal Code</div>
+                            <div class="item" data-value="CityState">City State</div>
+                            <div class="item" data-value="AddressLine1">Address Line 1</div>
+                            <div class="item" data-value="FullName">Full Name</div>
+                            <div class="item" data-value="FirstName">First Name</div>
+                            <div class="item" data-value="LastName">Last Name</div>
+                            <div class="item" data-value="DateOfBirth">Date of Birth</div>
+                            <div class="item" data-value="DateOfDeath">Date of Death</div>
+                            <div class="item" data-value="MoveDate">Move Date</div>
+                            <div class="item" data-value="MelissaAddressKey">Melissa Address Key</div>
+                            <div class="item" data-value="MelissaAddressKeyBase">Melissa Address Key Base</div>
+                        </div>
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_sortByOrder">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Sort By: Order</div>
+                        <div class="menu">
+                            <div class="item" data-value="-Ascending">Ascending</div>
+                            <div class="item" data-value="-Descending">Descending</div>
+                        </div>
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_searchConditions">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Search Conditions</div>
+                        <div class="menu">
+                            <div class="item" data-value="strict">Strict</div>
+                            <div class="item" data-value="progressive">Progressive</div>
+                            <div class="item" data-value="loose">Loose</div>
+                            <div class="item" data-value="batch">Batch</div>					
+                        </div>
+                    </div>
+                    <div class="ui input">
+                    	<input type="text" name="opt_maxEmail" placeholder="Max Email" size="22">
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_searchType">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Search Type</div>
+                        <div class="menu">
+                            <div class="item" data-value="Auto">Auto</div>
+                            <div class="item" data-value="NameSearch">Name Search</div>
+                            <div class="item" data-value="AddressSearch">Address Search</div>
+                            <div class="item" data-value="EmailSearch">Email Search</div>
+                            <div class="item" data-value="PhoneSearch">Phone Search</div>
+                        </div>
+                    </div>
+                    <div class="ui input">
+                    	<input type="text" name="opt_maxPhone" placeholder="Max Phone" size="22">
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_returnAllPages">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Return All Pages</div>
+                        <div class="menu">
+                            <div class="item" data-value="true">True</div>
+                            <div class="item" data-value="false">False</div>
+                        </div>
+                    </div>
+                    <div class="ui input">
+                    	<input type="text" name="opt_page" placeholder="Page" size="22">
+                    </div>
+                    <div class="ui input">
+                    	<input type="text" name="opt_recordsPerPage" placeholder="Records per Page" size="22">
+                    </div>
+                    <div class="ui input">
+                    	<input type="text" name="opt_ageRange" placeholder="Age Range" size="22">
+                    </div>             
+                </div>
+                <div class="column">
+					<h1>Personal Identity Information</h1>
+					<p>
+
+                    <h4>Name</h4>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="First Name..." name="first">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Last Name..." name="last">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Full Name..." name="full">
+                    </div>
+                    <p>
+
+					<h4>Address</h4>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Address1..." name="a1">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="City/Locality..." name="city">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="State/Administrative Area..." name="state">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Zip/Postal Code..." name="postal">
+                    </div>
+                    <p>
+
+                    <h4>Other</h4>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Phone Number..." name="phone">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Email..." name="email">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Melissa Address Key..." name="mak">
+                    </div>
+                    <p>
+
+                    <h4>Free Form Input</h4>
+                    <div class="ui info message">
+                    <p>Accepts delimited or undelimited free form input. This will be parsed by the service</p>
+                    </div>
+                    <p>
+                    <div class="ui form">
+                        <textarea name="ff" rows="5" placeholder="Free Form Input..."></textarea>                           
+                    </div>
+                    <p>
+                    <p><br>
+                    <button class="ui icon button normal" onclick="doClear()">
+                        <i class="erase icon"></i>
+                        Clear
+                    </button>
+                    <button class="ui icon button positive" onclick="doVerify()">
+                        <i class="thumbs up icon"></i>
+                        Send Request
+                    </button>
+                </div>
+            </div>
+        </div>
+
+		<!-- REST tab -->
+        <div class="ui bottom attached tab segment" data-tab="tab-name3">
+            <pre name="restOutput">
+                Run a record through first
+            </pre>
+        </div>
+		
+        <!-- Output tab -->
+        <div class="ui bottom attached tab segment" data-tab="tab-name2">
+            <pre name="jsonOutput">
+                Run a record through first
+            </pre>
+        </div>
+        <p><br>
+    </div>
+
+    <script>
+        $('.menu .item').tab();
+        $('.ui.dropdown').dropdown();
+        $('.ui.accordion').accordion();
+
+        $('#selectAll').change(function () {
+            if ($(this).prop('checked')) {
+               $('input').prop('checked', true);
+            } else {
+                $('input').prop('checked', false);
+            }
+        });
+        $('#selectAll').trigger('change');
+
+        function getColumnResponses() {
+            var columnResponses = "";
+            if ($('input[name=col_moveDate]').is(':checked')) columnResponses += "MoveDate,";
+            if ($('input[name=col_email]').is(':checked')) columnResponses += "Email,";
+			if ($('input[name=col_phone]').is(':checked')) columnResponses += "Phone,";
+			if ($('input[name=col_dateOfBirth]').is(':checked')) columnResponses += "DateOfBirth,";
+			if ($('input[name=col_dateOfDeath]').is(':checked')) columnResponses += "DateOfDeath,";
+            return columnResponses;
+        }
+
+        function getOpt() {
+            var opt = "";
+            if ($('input[name=opt_ageRange]').val() != "") opt += "AgeRange:" + $('input[name=opt_ageRange]').val() + ",";
+            if ($('input[name=opt_maxEmail]').val() != "") opt += "MaxEmail:" + $('input[name=opt_maxEmail]').val() + ",";
+            if ($('input[name=opt_maxPhone]').val() != "") opt += "MaxPhone:" + $('input[name=opt_maxPhone]').val() + ",";
+            if ($('input[name=opt_page]').val() != "") opt += "Page:" + $('input[name=opt_page]').val() + ",";	
+            if ($('input[name=opt_recordsPerPage]').val() != "") opt += "RecordsPerPage:" + $('input[name=opt_recordsPerPage]').val() + ",";
+            if ($('input[name=opt_returnAllPages]').val() != "") opt += "ReturnAllPages:" + $('input[name=opt_returnAllPages]').val() + ",";
+            if ($('input[name=opt_searchConditions]').val() != "") opt += "SearchConditions:" + $('input[name=opt_searchConditions]').val() + ",";
+            if ($('input[name=opt_searchType]').val() != "") opt += "SearchType:" + $('input[name=opt_searchType]').val() + ",";
+            if ($('input[name=opt_sortBy]').val() != "") {
+            	opt += "SortBy:" + $('input[name=opt_sortBy]').val();
+            	if ($('input[name=opt_sortByOrder]').val() != "") opt += $('input[name=opt_sortByOrder]').val() + ",";
+        	}
+            return opt;
+        }
+
+		function getUserInput() {
+			var userInput = "";
+			
+			// name
+            userInput += "&first=" + $('input[name=first]').val();
+            userInput += "&last=" + $('input[name=last]').val();
+            userInput += "&full=" + $('input[name=full]').val();
+
+            // address
+			userInput += "&a1=" + $('input[name=a1]').val();
+			userInput += "&city=" + $('input[name=city]').val();
+			userInput += "&state=" + $('input[name=state]').val();
+			userInput += "&postal=" + $('input[name=postal]').val();
+
+            // other
+			userInput += "&phone=" + $('input[name=phone]').val();
+			userInput += "&email=" + $('input[name=email]').val();
+			userInput += "&mak=" + $('input[name=mak]').val();
+
+            // free form
+            userInput += "&ff=" + $('textarea[name=ff]').val();			
+
+			return userInput;
+		}
+
+        function doVerify() {
+			var xhttp = new XMLHttpRequest();
+			var url = "https://personatorsearch.melissadata.net/WEB/doPersonatorSearch?";
+			url += "&id=" + encodeURIComponent($('input[name=id]').val());
+			url += "&cols=" + getColumnResponses().replace(/,\s*$/, "");
+			url += "&opt=" + getOpt().replace(/,\s*$/, "");
+			url += getUserInput();
+            url += "&format=JSON";
+			xhttp.open("GET", url, false);
+			xhttp.send();
+			console.log(url);
+			var response = JSON.parse(xhttp.responseText);
+			
+			$('pre[name=restOutput]').text('\n\n' + url + '\n\n\n');
+			$('pre[name=jsonOutput]').text(JSON.stringify(response, null, '\t'));
+			$('.ui.menu').find('.item').tab('change tab', 'tab-name2');
+        }
+
+        function doClear() {
+            $("input").each(function(index) {
+                $(this).val('');
+            })
+        }
+
+    </script>
+</body>
+</html>
